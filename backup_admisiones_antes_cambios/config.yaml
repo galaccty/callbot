@@ -1,0 +1,63 @@
+# ── Configuración del sistema de admisiones ──────────────────────────
+# Edite este archivo sin tocar código. Los cambios se aplican en la
+# siguiente corrida.
+
+reporte:
+  nombre: "Reporte Diario de Admisiones"
+  turno: "Turno 1"
+  responsable: ""
+
+# Total esperado de admisiones (para KPIs y gráficas)
+total_esperado: 0
+
+# ── Rangos de color para %Cumplimiento ──────────────────────────────
+# Rojo:   0 - <verde_desde
+# Amarillo: verde_desde - <verde_hasta
+# Verde:  >= verde_hasta
+rangos_color:
+  verde_desde: 70
+  verde_hasta: 90
+
+# ── Colores de las gráficas (formato RGB 0-255) ─────────────────────
+colores:
+  entregadas: [34, 139, 34]       # verde
+  faltantes: [220, 53, 69]        # rojo
+  cumplimiento_bajo: [220, 53, 69]
+  cumplimiento_medio: [255, 193, 7]
+  cumplimiento_alto: [34, 139, 34]
+
+# ── Tamaño de gráficas (en cm, convertido internamente) ──────────────
+graficas:
+  ancho_cm: 7
+  alto_cm: 4.5
+
+# ── Colores de estado en el Excel FUENTE ─────────────────────────────
+# El informe NO trae una columna 'Estado_Entrega': el estado se deduce del
+# COLOR de fondo de la celda 'Admision'.
+# IMPORTANTE (regla real de la IPS):
+#   - celda AMARILLA  = Entregada  (la admisión SÍ llegó / se entregó)
+#   - celda BLANCA / sin relleno = Faltante (aún no ha llegado)
+colores_estado:
+  entregada: "FFFFFF00"   # amarillo
+  faltante: "FFFFFFFF"    # blanco
+
+# ── Mapeo de columnas del Excel fuente ──────────────────────────────
+# Columnas obligatorias (nombres exactos del informe).
+#   - 'Estado_Entrega' NO está en el origen: se calcula desde el color de
+#     la celda 'Admision' (ver colores_estado).
+#   - 'Correo' y las dos columnas 'Teléfono'/'Telefóno' NO se exigen: son
+#     metadatos que no se usan y que cambian su acentuación según el informe,
+#     por lo que se dejan fuera para no bloquear el proceso.
+columnas_esperadas:
+  - "#"
+  - "Agencia"
+  - "Admision"
+  - "Fecha"
+  - "Afiliado"
+  - "Nombre"
+  - "Contrato"
+  - "Eps"
+  - "Estado"
+  - "Saldo"
+  - "Fnacimiento"
+  - "Usuario"
